@@ -1,15 +1,77 @@
 <html>
 
-    <head>
+<head>
 
-        <link rel="stylesheet" href="Universal.css" type="text/css">
+    <link rel="stylesheet" href="css/universal.css" type="text/css">
+    <link rel="stylesheet" href="css/play.css" type="text/css">
+    <!-- <script>
+        function sleep(ms) {
 
-    </head>
+            let p = new Promise((resolve, reject) => {
 
-    <body>
+                setTimeout(() => {
+                    resolve()
+                }, ms);
 
-        yes
-        
-    </body>
+            })
+
+            return p
+
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let a = document.getElementById('otherplayer')
+            console.log(a)
+            a.addEventListener('click', async (event) => {
+
+                for (let i = 90; i > 59; i--) {
+
+                    a.style = `background-image: linear-gradient(90deg, #070b ${i}%, #700b ${i + 10}%);`
+
+                    await sleep(30)
+
+                }
+
+            })
+
+        })
+    </script> -->
+
+</head>
+
+<body>
+
+    <div class="fullbackground">
+
+        <table id="otherplayer" class="playerbar">
+            <tbody style="display: table; width: 100%;">
+                <tr>
+                    <td class="playerinfo">
+                        Anonymous (L<span style="color:blueviolet;">0</span>)
+                    </td>
+                    <td class="emptyTD"></td>
+                    <td class="playerstats"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="board"></div>
+
+        <table id="player" class="playerbar">
+            <tbody style="display: table; width: 100%;">
+                <tr>
+                    <td class="playerinfo">
+                        Anonymous (L<span style="color:blueviolet;">0</span>)
+                    </td>
+                    <td class="emptyTD"></td>
+                    <td class="playerstats"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
 
 </html>

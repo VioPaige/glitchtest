@@ -1,0 +1,42 @@
+.board {
+    background-color: #fff3;
+    box-shadow: 10px 10px 25px #fff8;
+    
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    height: 60%;
+    width: 900px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playerbar {
+    margin-top: 15px;
+    border-radius: 7px;
+
+    height: 40px;
+    width: 800px;
+    
+    display: flex;
+    
+    background-image: linear-gradient(90deg, rgb(0, 255, 0) 60%, rgb(255, 0, 0) 70%);
+}
+
+.playerinfo {
+    width: 150px;
+    color: #000;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+
+.emptyTD {
+    width: 300px;
+}
+
+.playerstats {
+    width: 250px;
+}
