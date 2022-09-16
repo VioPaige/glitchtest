@@ -1,5 +1,10 @@
 const express = require('express')
 
+
+const cards = require('./modules/cards')
+const spells = require('./modules/spells')
+const effects = require('./modules/effects')
+
 const app = express()
 
 
