@@ -1,0 +1,23 @@
+{
+  "name": "glitchtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VioPaige/glitchtest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VioPaige/glitchtest/issues"
+  },
+  "homepage": "https://github.com/VioPaige/glitchtest#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
