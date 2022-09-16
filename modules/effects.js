@@ -1,7 +1,8 @@
 class Effect {
     constructor(name, shortcut, effect) {
 
-        this = { name, shortcut, effect }
+        // this.Values = {}
+        this.Values = { name, shortcut, effect }
 
     }
 }

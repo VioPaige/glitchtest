@@ -1,7 +1,8 @@
 class Card {
     constructor(name, atk, def, cost, pow) {
 
-        this = { name, atk, def, cost, pow }
+        // this.Values = {}
+        this.Values = { name, atk, def, cost, pow }
 
     }
 }

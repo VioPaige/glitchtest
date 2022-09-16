@@ -7,11 +7,16 @@ const effects = require('./modules/effects')
 
 const app = express()
 
+app.set('views engine', 'ejs')
+app.set('views', 'frontend')
+app.use(express.static('frontend'))
 
 
 app.get(`/`, (req, res) => {
 
-    res.send(`works`)
+    // res.send(`works`)
+    res.render(`home.ejs`)
+    // res.sendFile()
 
 })
 
