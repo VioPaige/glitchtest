@@ -49,9 +49,9 @@ module.exports = {
         7,
         [
             {
-                desc: "Running",
+                desc: "Rage",
                 iter: -1,
-                efct: "running:-1"
+                efct: "rage:-1"
             }
         ]
     )

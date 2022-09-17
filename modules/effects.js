@@ -55,11 +55,11 @@ module.exports = {
         }
     ),
     running: new Effect(
-        "Running",
-        "run",
+        "Rage",
+        "rag",
         (owner) => {
 
-            console.log(`owner is running`) // if owner attacks and the ATK is more than target DEF, the excess ATK is dealt to the next creature summoned in front of this (if this is still alive)
+            console.log(`owner is raging`) // if owner attacks and the ATK is more than target DEF, the excess ATK is dealt to the next creature summoned in front of this (if this is still alive)
 
         }
     ),

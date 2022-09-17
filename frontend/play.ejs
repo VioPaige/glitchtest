@@ -2,10 +2,13 @@
 
 <head>
 
-    <link rel="stylesheet" href="css/universal.css" type="text/css">
-    <link rel="stylesheet" href="css/play.css" type="text/css">
+    <link rel="stylesheet" href="/css/universal.css" type="text/css">
+    <link rel="stylesheet" href="/css/play.css" type="text/css">
 
-    <script src="js/utils.js"></script>
+    <script src="/js/socket.io.js"></script>
+    <script src="/js/utils.js"></script>
+
+    <script src="/js/connect.js"></script>
 
 </head>
 
@@ -19,7 +22,9 @@
                 <tbody style="display: table; width: 100%;">
                     <tr>
                         <td class="playerinfo">
-                            Anonymous (L<span style="color:blueviolet;">0</span>)
+                            <!-- Anonymous (L<span style="color:blueviolet;">0</span>) -->
+                            <%= opponent %> (L<span style="color:blueviolet;">0</span>)
+                            [<span id="optimer">0</span>]
                         </td>
                         <td class="emptyTD"></td>
                         <td class="playerstats"></td>
@@ -55,7 +60,10 @@
                 <tbody style="display: table; width: 100%;">
                     <tr>
                         <td class="playerinfo">
-                            Anonymous (L<span style="color:blueviolet;">0</span>)
+                            <!-- Anonymous (L<span style="color:blueviolet;">0</span>) -->
+                            <%= you %> (L<span style="color:blueviolet;">0</span>)
+                            [<span id="owntimer">60</span>]
+                            <button id="endturn" class="endturn">End Turn</button>
                         </td>
                         <td class="emptyTD"></td>
                         <td class="playerstats"></td>

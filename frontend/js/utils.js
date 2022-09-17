@@ -19,7 +19,7 @@ class Card {
 
         let icon = document.createElement('div')
         icon.classList = "cardicon"
-        icon.innerHTML = `<img src="Images/Cards/${this.Values.name}.png" width="86">`
+        icon.innerHTML = `<img src="/Images/Cards/${this.Values.name}.png" width="86">`
 
         let desc = document.createElement('div')
         desc.classList = "carddesc"
@@ -56,20 +56,38 @@ class Card {
     }
 }
 
-let s = new Card("Rat", 1, 1, 1, [{
+let ratcard = new Card("Rat", 1, 1, 1, [{
     desc: `Give <b>1</b> <span style="color:rgb(255, 0, 255);">poison</span> to any enemy this attacks. (Triggers 3 times MAX)`,
     iter: 3,
     efct: "diseased:1"
-}], "Images/Cards/Rat.png")
+}], "/Images/Cards/Rat.png")
+
+let mousecard = new Card("Mouse", 1, 1, 0, [{
+    desc: "-"
+}], "/Images/Cards/Mouse.png")
+
+let beercard = new Card("Beer", "-", "-", 2, [{
+    desc: `Gives <span style="color:rgb(255, 255, 0);">drunk</span> and <span style="color:rgb(255, 150, 0);">courage:2</span> to target.`,
+    iter: 2,
+    efct: ""
+}], "/Images/Cards/Beer.png")
+
+let adrenalinecard = new Card("Adrenaline", "-", "-", 3, [{
+    desc: `Gives <span style="">Adrenaline</span> Rush to target`,
+}], "/Images/Cards/Adrenaline.png")
+
+let rockthrowcard = new Card("Rock Throw", "-", "-", 4, [{
+    desc: `100% chance to hit first enemy, if hit, 75% chance to hit 2nd enemy, 50% 3rd, and 25% 4th. 2 <span style="color:rgb(255, 0, 0);">ATK</span> per hit.`
+}])
 
 let htmlcards = {
-    htmlcard1: s.makeCard(true, undefined),
-    htmlcard2: s.makeCard(true, undefined),
-    htmlcard3: s.makeCard(true, undefined),
-    htmlcard4: s.makeCard(true, undefined),
-    htmlcard5: s.makeCard(false, 1),
-    htmlcard6: s.makeCard(false, 2),
-    htmlcard7: s.makeCard(false, 3)
+    htmlcard1: ratcard.makeCard(true, undefined),
+    htmlcard2: mousecard.makeCard(true, undefined),
+    htmlcard3: ratcard.makeCard(true, undefined),
+    htmlcard4: ratcard.makeCard(true, undefined),
+    htmlcard5: beercard.makeCard(false, 1),
+    htmlcard6: adrenalinecard.makeCard(false, 2),
+    htmlcard7: rockthrowcard.makeCard(false, 3)
 }
 
 document.addEventListener('DOMContentLoaded', () => {

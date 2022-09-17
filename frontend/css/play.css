@@ -13,7 +13,7 @@
     /* flex-direction: column; */
     /* align-items: center; */
 
-    background-image: url('../Images/background.jpg');
+    background-image: url('/Images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: .5;
@@ -95,7 +95,7 @@
 }
 
 .playerinfo {
-    width: 150px;
+    width: 225px;
     color: #000;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 800;
@@ -103,7 +103,7 @@
 }
 
 .emptyTD {
-    width: 300px;
+    width: 225px;
 }
 
 .playerstats {
@@ -281,4 +281,11 @@
     color: gold;
     grid-column: 3;
     grid-row: 1;
+}
+
+.endturn {
+    background: none;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
 }
