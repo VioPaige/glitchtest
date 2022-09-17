@@ -16,7 +16,7 @@
     background-image: url('../Images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: .2;
+    opacity: .5;
 }
 
 .boardwrapper {
@@ -37,7 +37,7 @@
     align-self: center;
 
     
-    width: 300px;
+    width: 340px;
     height: 675px;
 
     grid-column: 2;
@@ -45,16 +45,26 @@
 }
 
 .hand {
-    background-color: #fff;
+    background-color: #fff1;
+
+    border-radius: 5px;
+
+    outline-width: 3px;
+    outline-style: inset;
+    outline-color: #fff;
+
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr;
 }
 
 .board {
-    background-color: #fff7;
-    box-shadow: 10px 10px 25px #fffa;
+    /* background-color: #fff7; */
+    /* box-shadow: 10px 10px 25px #fffa; */
 
     /* margin-top: 5px; */
     /* margin-bottom: 5px; */
-    border-radius: 10px;
+    border-radius: 3px;
     height: 550px;
     width: 875px;
     
@@ -70,8 +80,8 @@
 }
 
 .playerbar {
-    margin-top: 7px;
-    margin-bottom: 7px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     border-radius: 7px;
 
     height: 40px;
@@ -113,13 +123,8 @@
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-columns: minmax(25%, 25%);
-    /* grid-template-rows: repeat(1, 1fr); */
     grid-template-rows: 100%;
     gap: 0;
-
-    /* background-color: red; */
-    /* color: red; */
 }
 
 .playerboard.bot {
@@ -141,7 +146,9 @@
     outline-width: 3px;
     outline-style: inset;
 
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 1fr;
 }
 
 .slot1 {
@@ -166,5 +173,112 @@
 
 .card {
     background-color: #000;
+    display: none;
+    
+    outline-width: 2px;
+    outline-color: #f00d;
+    outline-style: inset;
+    
+    border-radius: 3px;
 
+    width: 160px;
+    height: 225px;
+
+    align-self: center;
+    justify-self: center;
+}
+
+.card.left {
+    grid-column: 1;
+}
+
+.card.right {
+    grid-column: 2;
+}
+
+.card.active {
+    display: grid;
+}
+
+.cardname {
+    color: #fff;
+
+    outline-width: 2px;
+    outline-color: #f00d;
+    outline-style: inset;
+
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    
+    width: 100%;
+    height: 25px;
+}
+
+.cardicon {
+    display: flex;
+
+    justify-content: center;
+
+    outline-width: 2px;
+    outline-color: #f00d;
+    outline-style: inset;
+
+    border-radius: 3px;
+}
+
+.carddesc {
+    color: #fff;
+    
+    padding: 2px;
+    height: 76px;
+    
+    text-align: center;
+    font-size: 13;
+}
+
+.cardstats {
+    display: grid;
+    
+    height: 33px;
+    
+    grid-template-columns: 1fr, 1fr, 1fr;
+    grid-template-columns: 33.3%; 
+    grid-template-rows: 100%;
+}
+
+.stat {
+    outline-width: 2px;
+    outline-color: #f00d;
+    outline-style: inset;
+
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    font-size: 25;
+}
+
+.attackstat {
+    color: red;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.defensestat {
+    color: lime;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.coststat {
+    color: gold;
+    grid-column: 3;
+    grid-row: 1;
 }

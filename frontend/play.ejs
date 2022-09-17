@@ -4,39 +4,8 @@
 
     <link rel="stylesheet" href="css/universal.css" type="text/css">
     <link rel="stylesheet" href="css/play.css" type="text/css">
-    <!-- <script>
-        function sleep(ms) {
 
-            let p = new Promise((resolve, reject) => {
-
-                setTimeout(() => {
-                    resolve()
-                }, ms);
-
-            })
-
-            return p
-
-        }
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            let a = document.getElementById('otherplayer')
-            console.log(a)
-            a.addEventListener('click', async (event) => {
-
-                for (let i = 90; i > 59; i--) {
-
-                    a.style = `background-image: linear-gradient(90deg, #070b ${i}%, #700b ${i + 10}%);`
-
-                    await sleep(30)
-
-                }
-
-            })
-
-        })
-    </script> -->
+    <script src="js/utils.js"></script>
 
 </head>
 
@@ -61,18 +30,24 @@
             <div class="board">
                 <div id="opponentboard" class="playerboard top">
                     <div id="opSLOT1" class="cardslot slot1">
-                        <card class="card"></card>
                     </div>
-                    <div id="opSLOT2" class="cardslot slot2"></div>
-                    <div id="opSLOT3" class="cardslot slot3"></div>
-                    <div id="opSLOT4" class="cardslot slot4"></div>
+                    <div id="opSLOT2" class="cardslot slot2">
+                    </div>
+                    <div id="opSLOT3" class="cardslot slot3">
+                    </div>
+                    <div id="opSLOT4" class="cardslot slot4">
+                    </div>
                 </div>
                 <div id="ownboard" class="playerboard bot">
                     
-                    <div id="ownSLOT1" class="cardslot slot1"></div>
-                    <div id="ownSLOT2" class="cardslot slot2"></div>
-                    <div id="ownSLOT3" class="cardslot slot3"></div>
-                    <div id="ownSLOT4" class="cardslot slot4"></div>
+                    <div id="ownSLOT1" class="cardslot slot1">
+                    </div>
+                    <div id="ownSLOT2" class="cardslot slot2">
+                    </div>
+                    <div id="ownSLOT3" class="cardslot slot3">
+                    </div>
+                    <div id="ownSLOT4" class="cardslot slot4">
+                    </div>
                 </div>
             </div>
 
@@ -92,8 +67,13 @@
 
         <div class="handwrapper">
 
-            <div class="hand">
-                
+            <div id="handdiv" class="hand">
+                <!-- <card class="card left active"></card>
+                <card class="card right active"></card>
+                <card class="card left active"></card>
+                <card class="card right active"></card>
+                <card class="card left active"></card>
+                <card class="card right active"></card> -->
             </div>
 
         </div>

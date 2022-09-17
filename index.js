@@ -15,7 +15,7 @@ app.use(express.static('frontend'))
 app.get(`/`, (req, res) => {
 
     // res.send(`works`)
-    res.render(`home.ejs`)
+    res.render(`play.ejs`)
     // res.sendFile()
 
 })

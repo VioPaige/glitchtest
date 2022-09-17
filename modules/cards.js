@@ -16,7 +16,7 @@ module.exports = {
         1, // cost
         [ // powers
             {
-                desc: "Give <amount> poison to any enemy this attacks. (Triggers 3 times MAX)",
+                desc: "Give 1 poison to any enemy this attacks. (Triggers 3 times MAX)",
                 iter: 3,
                 efct: "diseased:1"
             }
