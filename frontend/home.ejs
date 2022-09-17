@@ -44,31 +44,59 @@
 
     <div class="fullbackground">
 
-        <table id="otherplayer" class="playerbar">
-            <tbody style="display: table; width: 100%;">
-                <tr>
-                    <td class="playerinfo">
-                        Anonymous (L<span style="color:blueviolet;">0</span>)
-                    </td>
-                    <td class="emptyTD"></td>
-                    <td class="playerstats"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="boardwrapper">
 
-        <div class="board"></div>
+            <table id="otherplayer" class="playerbar">
+                <tbody style="display: table; width: 100%;">
+                    <tr>
+                        <td class="playerinfo">
+                            Anonymous (L<span style="color:blueviolet;">0</span>)
+                        </td>
+                        <td class="emptyTD"></td>
+                        <td class="playerstats"></td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <table id="player" class="playerbar">
-            <tbody style="display: table; width: 100%;">
-                <tr>
-                    <td class="playerinfo">
-                        Anonymous (L<span style="color:blueviolet;">0</span>)
-                    </td>
-                    <td class="emptyTD"></td>
-                    <td class="playerstats"></td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="board">
+                <div id="opponentboard" class="playerboard top">
+                    <div id="opSLOT1" class="cardslot slot1">
+                        <card class="card"></card>
+                    </div>
+                    <div id="opSLOT2" class="cardslot slot2"></div>
+                    <div id="opSLOT3" class="cardslot slot3"></div>
+                    <div id="opSLOT4" class="cardslot slot4"></div>
+                </div>
+                <div id="ownboard" class="playerboard bot">
+                    
+                    <div id="ownSLOT1" class="cardslot slot1"></div>
+                    <div id="ownSLOT2" class="cardslot slot2"></div>
+                    <div id="ownSLOT3" class="cardslot slot3"></div>
+                    <div id="ownSLOT4" class="cardslot slot4"></div>
+                </div>
+            </div>
+
+            <table id="player" class="playerbar">
+                <tbody style="display: table; width: 100%;">
+                    <tr>
+                        <td class="playerinfo">
+                            Anonymous (L<span style="color:blueviolet;">0</span>)
+                        </td>
+                        <td class="emptyTD"></td>
+                        <td class="playerstats"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="handwrapper">
+
+            <div class="hand">
+                
+            </div>
+
+        </div>
 
     </div>
 
