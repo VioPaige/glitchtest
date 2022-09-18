@@ -1,6 +1,11 @@
 let lastmatchid = 1
 let lastplrid = 1
 
+const cmod = {
+    cards: require('../modules/cards'),
+    spells: require('../modules/spells'),
+    effects: require('../modules/effects')
+}
 
 module.exports = {
     Matches: {
@@ -22,11 +27,11 @@ module.exports = {
                 connected: undefined,
                 connection: undefined,
                 cookie: undefined,
-                stats: {
-                    balance: undefined,
-                    health: undefined
-                },
-                hand: {
+                stats: [],
+                hand: [],
+                deathpit: [],
+                stack: [],
+                /*{
                     creature: {
                         name: undefined,
                         atk: undefined,
@@ -39,35 +44,7 @@ module.exports = {
                         cost: undefined,
                         pow: [undefined]
                     }
-                },
-                deathpit: {
-                    creature: {
-                        name: undefined,
-                        atk: undefined,
-                        def: undefined,
-                        cost: undefined,
-                        pow: [undefined]
-                    },
-                    spell: {
-                        name: undefined,
-                        cost: undefined,
-                        pow: [undefined]
-                    }
-                },
-                stack: {
-                    creature: {
-                        name: undefined,
-                        atk: undefined,
-                        def: undefined,
-                        cost: undefined,
-                        pow: [undefined]
-                    },
-                    spell: {
-                        name: undefined,
-                        cost: undefined,
-                        pow: [undefined]
-                    }
-                },
+                }*/
                 board: {
                     pos1: undefined/*{
                         name: undefined,
@@ -81,6 +58,33 @@ module.exports = {
                     pos4: undefined
                 }
             }
+
+        },
+        randomiseStack: () => {
+
+            let amounts = {
+                cards: 16,
+                spells: 9
+            }
+
+            let stack = []
+
+            for (let [i, v] of Object.entries(amounts)) {
+
+                for (let j = 0; j < v; j++) {
+
+                    let randompick = Math.max(Math.round(Math.random() * Object.keys(cmod[i]).length) - 1, 0)
+                    let picked = cmod[i][Object.keys(cmod[i])[randompick]]
+
+                    stack[stack.length] = picked()
+
+                }
+
+            }
+
+            console.log(stack)
+
+            return stack
 
         }
     }

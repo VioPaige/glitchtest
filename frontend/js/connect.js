@@ -13,6 +13,7 @@ function getcookie(n) {
 document.addEventListener('DOMContentLoaded', () => {
 
     let socket = io()
+    let handamount = 0
 
     let ownhealth = document.getElementById('player')
     let ophealth = document.getElementById('otherplayer')
@@ -46,6 +47,27 @@ document.addEventListener('DOMContentLoaded', () => {
         bar.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${t.green}%, rgb(255, 0, 0) ${t.red}%)`
 
     })
+
+    socket.on('draw', (drawn) => {
+
+        console.log(drawn)
+
+        for (let i of drawn) {
+
+            i = i[0]
+            handamount++
+
+            let card = newCardClass(i.Values)
+            let handcard = card.makeCard(false, handamount)
+
+            let handdiv = document.getElementById('handdiv')
+            handdiv.appendChild(handcard)
+
+        }
+
+    })
+
+
 
 
     // local listeners

@@ -136,10 +136,16 @@ app.get(`/makematch`, (req, res) => {
     matches[id] = {
         inprogress: false,
         atturn: 1,
+        gameturn: 1,
         timer: 60,
         player1: Matches.makePlayer(),
         player2: Matches.makePlayer()
     }
+
+    matches[id].player1.stack = Matches.randomiseStack(),
+    matches[id].player2.stack = Matches.randomiseStack(),
+
+    // console.log(matches[id].player1.stack, matches[id].player2.stack)
 
     matches[id].player1.cookie = plrid
 

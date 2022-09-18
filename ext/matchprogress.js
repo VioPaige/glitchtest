@@ -43,7 +43,7 @@ class Matchdoc {
 
 
 
-    timer = async () => { // clear by clearInterval(interval)
+    timer = async () => { 
 
         if (this.doc.timer > 0) {
 
@@ -104,28 +104,7 @@ class Matchdoc {
 
             v.on('endturn', () => {
 
-                // console.log(`endturn`)
-                // if (this.doc.atturn == i) {
-
-                //     if (i == 1) {
-
-                //         clearInterval(this.interval)
-
-                //         this.doc.atturn = 2
-                //         this.doc.timer = 60
-
-                //     } else {
-
-                //         this.doc.atturn = 1
-                //         this.doc.timer = 60
-
-                //     }
-
-                // } else {
-
-                //     return
-
-                // }
+                this.endofturn()
 
             })
 
@@ -146,6 +125,7 @@ class Matchdoc {
         } else {
 
             this.doc.atturn = 1
+            this.doc.gameturn++
             this.doc.timer = 60
 
         }
@@ -155,6 +135,53 @@ class Matchdoc {
     }
 
     startofturn = () => {
+
+        if (this.doc.gameturn == 1) { // turn 1
+
+            let amount = 4
+            let drawn = []
+
+            for (let i = 0; i < amount; i++) {
+
+                let randompick = Math.max(Math.round((Math.random() * this.doc[`player${this.doc.atturn}`].stack.length) - 1), 0)
+                let picked = this.doc[`player${this.doc.atturn}`].stack.splice(randompick, 1)
+
+                drawn.push(picked)
+                this.doc[`player${this.doc.atturn}`].hand.push(picked)
+
+            }
+
+            this.doc[`player${this.doc.atturn}`].connection.emit('draw', drawn)
+
+        } else { // not turn 1
+
+            if (this.doc[`player${this.doc.atturn}`].hand.length < 6) { // not full hand
+
+                let amount = 1
+                let drawn = []
+
+                for (let i = 0; i < amount; i++) {
+
+                    let randompick = Math.max(Math.round((Math.random() * this.doc[`player${this.doc.atturn}`].stack.length) - 1), 0)
+                    let picked = this.doc[`player${this.doc.atturn}`].stack.splice(randompick, 1)
+
+                    drawn.push(picked)
+                    this.doc[`player${this.doc.atturn}`].hand.push(picked)
+
+                }
+
+                this.doc[`player${this.doc.atturn}`].connection.emit('draw', drawn)
+
+            } else { // full hand
+
+                let drawn = []
+
+                this.doc[`player${this.doc.atturn}`].connection.emit('draw', drawn)
+
+            }
+
+        }
+
 
         if (this.doc.atturn == 1) this.doc.notatturn = 2
         else this.doc.notatturn = 1
@@ -171,7 +198,7 @@ class Matchdoc {
 
                         if (Object.keys(i) != 0) {
 
-                            // i.startofturn
+
 
                         }
 
