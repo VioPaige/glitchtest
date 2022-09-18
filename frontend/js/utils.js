@@ -86,37 +86,50 @@ let rockthrowcard = new Card("Rock Throw", "-", "-", 4, [{
     desc: `100% chance to hit first enemy, if hit, 75% chance to hit 2nd enemy, 50% 3rd, and 25% 4th. 2 <span style="color:rgb(255, 0, 0);">ATK</span> per hit.`
 }])
 
+let boarcard = new Card("Boar", 5, 5, 7, [{
+    desc: `Rage`
+}], "/Images/Cards/Boar.png")
 
-// let htmlcards = {
-//     htmlcard1: ratcard.makeCard(true, undefined),
-//     htmlcard2: mousecard.makeCard(true, undefined),
-//     htmlcard3: batcard.makeCard(true, undefined),
-//     htmlcard4: ratcard.makeCard(true, undefined),
-//     htmlcard5: beercard.makeCard(false, 1),
-//     htmlcard6: adrenalinecard.makeCard(false, 2),
-//     htmlcard7: rockthrowcard.makeCard(false, 3)
-// }
+let boarcard2 = new Card("Boar", 5, 5, 7, [{
+    desc: `Rage`
+}], "/Images/Cards/Boar2.png")
+
+let blackdeathcard = new Card("Black Death", "-", "-", 5, [{
+    desc: `Gives <span style="color:grey;">diseased:2</span> to target, proceeds to any neigbouring cards (nondiagonal), continues until space.`
+}], "/Images/Cards/Black Death.png")
+
+
+let htmlcards = {
+    htmlcard1: ratcard.makeCard(true, undefined),
+    htmlcard2: mousecard.makeCard(true, undefined),
+    htmlcard3: batcard.makeCard(true, undefined),
+    htmlcard4: boarcard.makeCard(true, undefined),
+    htmlcard5: beercard.makeCard(false, 1),
+    htmlcard6: adrenalinecard.makeCard(false, 2),
+    htmlcard7: blackdeathcard.makeCard(false, 3),
+    htmlcard8: rockthrowcard.makeCard(false, 4)
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // let slot2 = document.getElementById('opSLOT2') 
-    // slot2.appendChild(htmlcards.htmlcard2)
+    let slot2 = document.getElementById('opSLOT2') 
+    slot2.appendChild(htmlcards.htmlcard2)
 
-    // for (let i = 1; i < 8; i++) {
+    for (let i = 1; i < 9; i++) {
 
-    //     if (i < 5) {
+        if (i < 5) {
 
-    //         let slot = document.getElementById(`opSLOT${i}`)
-    //         slot.appendChild(htmlcards[`htmlcard${i}`])
+            let slot = document.getElementById(`opSLOT${i}`)
+            slot.appendChild(htmlcards[`htmlcard${i}`])
 
-    //     } else {
+        } else {
 
-    //         let slot = document.getElementById(`handdiv`)
-    //         slot.appendChild(htmlcards[`htmlcard${i}`])
+            let slot = document.getElementById(`handdiv`)
+            slot.appendChild(htmlcards[`htmlcard${i}`])
 
-    //     }
+        }
 
-    // }
+    }
 
 
 })

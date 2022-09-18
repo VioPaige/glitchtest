@@ -44,7 +44,7 @@ class Matchdoc {
 
 
     timer = async () => { 
-
+        console.log(`timer: ${this.doc.timer}`)
         if (this.doc.timer > 0) {
 
             let targetupdate = {

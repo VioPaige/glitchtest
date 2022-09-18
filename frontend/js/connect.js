@@ -1,9 +1,9 @@
 function getcookie(n) {
 
     const cookieValue = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith(`${n}=`))
-    ?.split('=')[1]
+        .split('; ')
+        .find((row) => row.startsWith(`${n}=`))
+        ?.split('=')[1]
 
     return cookieValue
 
@@ -17,6 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let ownhealth = document.getElementById('player')
     let ophealth = document.getElementById('otherplayer')
+    let selectedcard = undefined
+    let ownboard = {
+        1: {
+            el: document.getElementById(`ownSLOT1`),
+            taken: false
+        },
+        2: {
+            el: document.getElementById(`ownSLOT2`),
+            taken: false
+        },
+        3: {
+            el: document.getElementById(`ownSLOT3`),
+            taken: false
+        },
+        4: {
+            el: document.getElementById(`ownSLOT4`),
+            taken: false
+        }
+    }
 
     ownhealth.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${100}%, rgb(255, 0, 0) ${110}%)`
     ophealth.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${100}%, rgb(255, 0, 0) ${110}%)`
@@ -52,8 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(drawn)
 
-        for (let i of drawn) {
+        let handcards = []
 
+        for (let i of drawn) {
+            console.log(`in drawn`)
             i = i[0]
             handamount++
 
@@ -63,10 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let handdiv = document.getElementById('handdiv')
             handdiv.appendChild(handcard)
 
+            handcards.push(handcard)
+
         }
 
-    })
+        listenToCards(handcards)
 
+    })
 
 
 
@@ -78,26 +102,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
-    function listenToCard(card) {
+    function listenToCards(cards) {
 
+        for (let i of cards) {
 
-        
-    }
+            iclick = () => {
 
-    function callback(mutList, observer) {
+                for (let j of cards) {
 
-        for (let i of mutList) {
+                    j.style = ``
 
-            console.log(i)
+                }
+
+                i.style = `outline-color: blue;`
+                selectedcard = i
+
+                let slotstoend = []
+
+                for (let [id, slot] of Object.entries(ownboard)) {
+
+                    if (slot.taken == false) {
+
+                        slotclick = () => {
+
+                            console.log(`slotid=${id}`)
+
+                            for (let i of slotstoend) {
+
+                                console.log(`removed from slot ${i.slot}`)
+                                console.log(i.slot)
+                                i.slot.el.removeEventListener('click', i.f)
+
+                            }
+
+                            slot.el.appendChild(i)
+                            slot.taken = true
+
+                        }
+
+                        slot.el.addEventListener('click', slotclick)
+                        slotstoend.push({ slot: slot, f: slotclick })
+
+                    }
+
+                }
+
+            }
+
+            i.addEventListener('click', iclick)
 
         }
 
     }
 
-    let hand = document.getElementById('handdiv')
-    let mut = new MutationObserver(callback)
-    let config = { childList: true }
-    mut.observe(hand, config)
+
 
 
 

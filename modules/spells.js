@@ -32,7 +32,7 @@ module.exports = {
     
             }
         )
-    }  ,
+    },
     Adrenaline: () => {
         return new Spell(
             "Adrenaline",
@@ -44,5 +44,17 @@ module.exports = {
     
             }
         )
-    } 
+    } ,
+    "Black Death": () => {
+        return new Spell(
+            "Black Death",
+            5,
+            "Gives diseased:2 to target, proceeds to any neigbouring cards (nondiagonal), continues until space.",
+            (target) => {
+
+                console.log(`as described`)
+
+            }
+        )
+    }
 }

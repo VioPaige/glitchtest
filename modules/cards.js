@@ -63,5 +63,18 @@ module.exports = {
                 }
             ]
         )
-    }, 
+    },
+    Wheat: () => {
+        return new Card(
+            "Wheat",
+            0,
+            5,
+            5,
+            [
+                {
+                    desc: "Start of turn: Earn 2 money."
+                }
+            ]
+        )
+    }
 }
