@@ -69,13 +69,13 @@ module.exports = {
                     }
                 },
                 board: {
-                    pos1: {
+                    pos1: undefined/*{
                         name: undefined,
                         atk: undefined,
                         def: undefined,
                         cost: undefined,
                         pow: [undefined]
-                    },
+                    }*/,
                     pos2: undefined,
                     pos3: undefined,
                     pos4: undefined

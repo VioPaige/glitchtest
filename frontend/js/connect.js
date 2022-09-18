@@ -14,8 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let socket = io()
 
+    let ownhealth = document.getElementById('player')
+    let ophealth = document.getElementById('otherplayer')
 
+    ownhealth.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${100}%, rgb(255, 0, 0) ${110}%)`
+    ophealth.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${100}%, rgb(255, 0, 0) ${110}%)`
 
+    console.log(ownhealth)
+    console.log(ophealth)
 
 
     // listeners
@@ -31,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let timer = document.getElementById(t.elem)
         timer.innerText = t.value
+
+    })
+
+    socket.on('healthchange', (t) => { // max 50hp?
+
+        let bar = document.getElementById(t.elem)
+        bar.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${t.green}%, rgb(255, 0, 0) ${t.red}%)`
 
     })
 

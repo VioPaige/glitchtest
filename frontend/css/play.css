@@ -91,7 +91,7 @@
     justify-self: center;
     align-self: center;
     
-    background-image: linear-gradient(90deg, rgb(0, 255, 0) 60%, rgb(255, 0, 0) 70%);
+    /* background-image: linear-gradient(90deg, rgb(0, 255, 0) 60%, rgb(255, 0, 0) 70%); */
 }
 
 .playerinfo {
@@ -176,7 +176,7 @@
     display: none;
     
     outline-width: 2px;
-    outline-color: #f00d;
+    outline-color: #fffd;
     outline-style: inset;
     
     border-radius: 3px;
@@ -204,7 +204,7 @@
     color: #fff;
 
     outline-width: 2px;
-    outline-color: #f00d;
+    outline-color: #fffd;
     outline-style: inset;
 
     border-radius: 3px;
@@ -224,7 +224,7 @@
     justify-content: center;
 
     outline-width: 2px;
-    outline-color: #f00d;
+    outline-color: #fffd;
     outline-style: inset;
 
     border-radius: 3px;
@@ -252,7 +252,7 @@
 
 .stat {
     outline-width: 2px;
-    outline-color: #f00d;
+    outline-color: #fffd;
     outline-style: inset;
 
     border-radius: 3px;
