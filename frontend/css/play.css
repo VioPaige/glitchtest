@@ -188,6 +188,10 @@
     justify-self: center;
 }
 
+.card:hover {
+    outline-color: #00fd;
+}
+
 .card.left {
     grid-column: 1;
 }
@@ -204,7 +208,7 @@
     color: #fff;
 
     outline-width: 2px;
-    outline-color: #fffd;
+    outline-color: inherit;
     outline-style: inset;
 
     border-radius: 3px;
@@ -224,7 +228,7 @@
     justify-content: center;
 
     outline-width: 2px;
-    outline-color: #fffd;
+    outline-color: inherit;
     outline-style: inset;
 
     border-radius: 3px;
@@ -242,6 +246,12 @@
 
 .cardstats {
     display: grid;
+
+    outline-width: 2px;
+    outline-color: inherit;
+    outline-style: inset;
+
+    border-radius: 3px;
     
     height: 33px;
     
@@ -252,7 +262,7 @@
 
 .stat {
     outline-width: 2px;
-    outline-color: #fffd;
+    outline-color: inherit;
     outline-style: inset;
 
     border-radius: 3px;

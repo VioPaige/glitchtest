@@ -1,4 +1,4 @@
-class Matchdoc{
+class Matchdoc {
     constructor(md) {
 
         this.doc = md
@@ -13,7 +13,7 @@ class Matchdoc{
 
             if (target == "op") {
 
-                this.doc[`player${this.doc.notatturn}`].stats.health -=amount
+                this.doc[`player${this.doc.notatturn}`].stats.health -= amount
 
                 let greenred = {
                     green: (this.doc[`player${this.doc.notatturn}`].stats.health / 50) * 100,
@@ -25,7 +25,7 @@ class Matchdoc{
 
             } else if (target == "self") {
 
-                this.doc[`player${this.doc.atturn}`].stats.health -=amount
+                this.doc[`player${this.doc.atturn}`].stats.health -= amount
 
                 let greenred = {
                     green: (this.doc[`player${this.doc.atturn}`].stats.health / 50) * 100,
@@ -36,7 +36,7 @@ class Matchdoc{
                 this.doc[`player${this.doc.atturn}`].connection.emit('healthchange', { elem: "player", green: greenred.green, red: greenred.red })
 
             }
-            
+
         }
     }
 
@@ -60,13 +60,13 @@ class Matchdoc{
             } else {
 
                 targetupdate.player1 = "optimer",
-                targetupdate.player2 = "owntimer"
+                    targetupdate.player2 = "owntimer"
 
             }
 
             this.doc.timer--
-            this.doc.player1.connection.emit(`timerupdate`, {elem: targetupdate.player1, value: this.doc.timer})
-            this.doc.player2.connection.emit(`timerupdate`, {elem: targetupdate.player2, value: this.doc.timer})
+            this.doc.player1.connection.emit(`timerupdate`, { elem: targetupdate.player1, value: this.doc.timer })
+            this.doc.player2.connection.emit(`timerupdate`, { elem: targetupdate.player2, value: this.doc.timer })
 
         } else {
 
@@ -103,7 +103,7 @@ class Matchdoc{
         for (let [i, v] of Object.entries(sockets)) {
 
             v.on('endturn', () => {
-                
+
                 // console.log(`endturn`)
                 // if (this.doc.atturn == i) {
 
@@ -135,7 +135,22 @@ class Matchdoc{
 
     endofturn = () => {
 
+        clearInterval(this.interval)
 
+        if (this.doc.atturn == 1) {
+
+
+            this.doc.atturn = 2
+            this.doc.timer = 60
+
+        } else {
+
+            this.doc.atturn = 1
+            this.doc.timer = 60
+
+        }
+
+        this.startofturn()
 
     }
 

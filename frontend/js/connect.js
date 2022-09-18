@@ -56,7 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
+    function listenToCard(card) {
 
+
+        
+    }
+
+    function callback(mutList, observer) {
+
+        for (let i of mutList) {
+
+            console.log(i)
+
+        }
+
+    }
+
+    let hand = document.getElementById('handdiv')
+    let mut = new MutationObserver(callback)
+    let config = { childList: true }
+    mut.observe(hand, config)
 
 
 
