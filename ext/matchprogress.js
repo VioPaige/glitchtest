@@ -2,6 +2,7 @@ class Matchdoc {
     constructor(md) {
 
         this.doc = md
+        // this.cardid = 0
 
         this.start()
 
@@ -41,9 +42,14 @@ class Matchdoc {
     }
 
 
+    otherPlrNum = (curplrnum) => {
 
+        if (curplrnum == 1) return 2
+        else return 1
 
-    timer = async () => { 
+    }
+
+    timer = async () => {
         console.log(`timer: ${this.doc.timer}`)
         if (this.doc.timer > 0) {
 
@@ -102,11 +108,54 @@ class Matchdoc {
 
         for (let [i, v] of Object.entries(sockets)) {
 
-            v.on('endturn', () => {
+            // console.log(`this.atturn=${this.atturn}, i=${i}`)
+            // all listeners that only work during own turn
+            if (this.doc.atturn == i) {
 
-                this.endofturn()
+                // endturn
+                v.on('endturn', () => {
 
-            })
+                    this.endofturn()
+
+                })
+
+                // cardplayed
+                // console.log(`cardplayed?`)
+                v.on('cardplayed', (data) => {
+                    console.log(data)
+                    let contains = [false, undefined] // yes/no, atindex
+
+                    for (let i = 0; i < this.doc[`player${this.doc.atturn}`].hand.length; i++) {
+                        // console.log(this.doc[`player${this.doc.atturn}`].hand[i], data.cardid)
+                        // console.log(this.doc[`player${this.doc.atturn}`].hand)
+                        if (this.doc[`player${this.doc.atturn}`].hand[i][0][1] == data.cardid) {
+
+                            contains = [true, i]
+                            // console.log(`the card is in the hand`)
+
+                        }
+
+                    }
+
+                    if (contains[0] && !this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`]) {
+
+                        let picked = this.doc[`player${this.doc.atturn}`].hand.splice(contains[1], 1)
+
+                        // console.log(picked)
+
+                        this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`] = picked
+                        console.log(this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`])
+
+                        this.doc[`player${this.doc.atturn}`].connection.emit(`cardplaced`, { picked: data.cardid, position: data.position, player: `own` })
+                        this.doc[`player${this.otherPlrNum(this.doc.atturn)}`].connection.emit(`cardplaced`, { picked: data.cardid, position: data.position, player: `op`, cardinfo: picked })
+
+                    }
+
+                })
+
+            }
+
+            // other listeners
 
         }
 

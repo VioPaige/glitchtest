@@ -67,16 +67,20 @@ module.exports = {
                 spells: 9
             }
 
+            let id = 0
+
             let stack = []
 
             for (let [i, v] of Object.entries(amounts)) {
 
                 for (let j = 0; j < v; j++) {
 
+                    id++
+
                     let randompick = Math.max(Math.round(Math.random() * Object.keys(cmod[i]).length) - 1, 0)
                     let picked = cmod[i][Object.keys(cmod[i])[randompick]]
 
-                    stack[stack.length] = picked()
+                    stack[stack.length] = [picked(), id]
 
                 }
 

@@ -266,12 +266,6 @@ io.on('connection', (socket) => {
 
     })
 
-    // socket.on('endturn', (data) => {
-    //     console.log(socket)
-    //     console.log(`endturn from index`)
-        
-    // })
-
 })
 
 

@@ -76,11 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i of drawn) {
             console.log(`in drawn`)
-            i = i[0]
+            let cardid = i[0][1]
+            i = i[0][0]
             handamount++
 
             let card = newCardClass(i.Values)
             let handcard = card.makeCard(false, handamount)
+
+            handcard.setAttribute('cardid', cardid)
 
             let handdiv = document.getElementById('handdiv')
             handdiv.appendChild(handcard)
@@ -90,6 +93,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         listenToCards(handcards)
+
+    })
+
+    socket.on('cardplaced', (data) => {
+        console.log(`cardplaced`)
+        console.log(data)
+        let { picked, position, player, cardinfo } = data
+
+        let slot = document.getElementById(`${player}SLOT${position}`)
+        
+        let card
+
+        if (cardinfo) {
+
+            let c = newCardClass(cardinfo[0][0][0].Values)
+            card = c.makeCard(false, handamount)
+
+            card.setAttribute('cardid', picked)
+
+        } else {
+
+            card = document.querySelector(`[cardid="${picked}"]`)
+
+        }
+
+        console.log(`querySelector(\`[cardid="${picked}"]\`)`)
+        console.log(slot, card)
+        card.classList = `card active`
+
+        slot.appendChild(card)
 
     })
 
@@ -105,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function listenToCards(cards) {
 
-        for (let i of cards) {
+        for (let icard of cards) {
 
             iclick = () => {
 
@@ -115,8 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 }
 
-                i.style = `outline-color: blue;`
-                selectedcard = i
+                icard.style = `outline-color: blue;`
+                selectedcard = icard
 
                 let slotstoend = []
 
@@ -139,7 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             // i.classList = `card active`
                             // slot.el.appendChild(i)
                             // slot.taken = true
-                            socket.emit('cardplayed', { card })
+                            console.log(`emitting cardplayed`)
+                            console.log({cardid: icard.getAttribute('cardid'), position: id})
+                            socket.emit('cardplayed', { cardid: icard.getAttribute('cardid'), position: id })
 
                         }
 
@@ -152,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             }
 
-            i.addEventListener('click', iclick)
+            icard.addEventListener('click', iclick)
 
         }
 
