@@ -199,7 +199,11 @@ app.get(`thismatchdoesnotexist`, (req, res) => res.send(`This match either does 
 
 
 
+app.get(`/viewmatchdata/:id`, (req, res) => {
 
+    res.send(matches[req.params.id])
+
+})
 
 
 io.on('connection', (socket) => {
@@ -222,15 +226,16 @@ io.on('connection', (socket) => {
             socket.emit(`idresponse`, true)
 
             if (matches[data.matchid].player1.cookie == data.id) {
-
+                console.log(`player1.cookie`)
                 matches[data.matchid].player1.connected = true
                 matches[data.matchid].player1.connection = socket
-
+                
                 if (matches[data.matchid].player2.connected) {
-
+                    
                     if (!matches[data.matchid].inprogress) {
 
                         matches[data.matchid].inprogress = true
+                        console.log(`234: start`)
                         match.start(matches[data.matchid])
 
                     }
@@ -238,7 +243,7 @@ io.on('connection', (socket) => {
                 }
 
             } else {
-
+                console.log(`player2.cookie`)
                 matches[data.matchid].player2.connected = true
                 matches[data.matchid].player2.connection = socket
 
@@ -247,6 +252,7 @@ io.on('connection', (socket) => {
                     if (!matches[data.matchid].inprogress) {
 
                         matches[data.matchid].inprogress = true
+                        console.log(`251: start`)
                         match.start(matches[data.matchid])
 
                     }

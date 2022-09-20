@@ -48,7 +48,7 @@ module.exports = {
     "Black Death": () => {
         return new Spell(
             "Black Death",
-            5,
+            7,
             "Gives diseased:2 to target, proceeds to any neigbouring cards (nondiagonal), continues until space.",
             (target) => {
 

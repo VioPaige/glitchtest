@@ -99,37 +99,37 @@ let blackdeathcard = new Card("Black Death", "-", "-", 5, [{
 }], "/Images/Cards/Black Death.png")
 
 
-let htmlcards = {
-    htmlcard1: ratcard.makeCard(true, undefined),
-    htmlcard2: mousecard.makeCard(true, undefined),
-    htmlcard3: batcard.makeCard(true, undefined),
-    htmlcard4: boarcard.makeCard(true, undefined),
-    htmlcard5: beercard.makeCard(false, 1),
-    htmlcard6: adrenalinecard.makeCard(false, 2),
-    htmlcard7: blackdeathcard.makeCard(false, 3),
-    htmlcard8: rockthrowcard.makeCard(false, 4)
-}
+// let htmlcards = {
+//     htmlcard1: ratcard.makeCard(true, undefined),
+//     htmlcard2: mousecard.makeCard(true, undefined),
+//     htmlcard3: batcard.makeCard(true, undefined),
+//     htmlcard4: boarcard.makeCard(true, undefined),
+//     htmlcard5: beercard.makeCard(false, 1),
+//     htmlcard6: adrenalinecard.makeCard(false, 2),
+//     htmlcard7: blackdeathcard.makeCard(false, 3),
+//     htmlcard8: rockthrowcard.makeCard(false, 4)
+// }
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let slot2 = document.getElementById('opSLOT2') 
-    slot2.appendChild(htmlcards.htmlcard2)
+    // let slot2 = document.getElementById('opSLOT2') 
+    // slot2.appendChild(htmlcards.htmlcard2)
 
-    for (let i = 1; i < 9; i++) {
+    // for (let i = 1; i < 9; i++) {
 
-        if (i < 5) {
+    //     if (i < 5) {
 
-            let slot = document.getElementById(`opSLOT${i}`)
-            slot.appendChild(htmlcards[`htmlcard${i}`])
+    //         let slot = document.getElementById(`opSLOT${i}`)
+    //         slot.appendChild(htmlcards[`htmlcard${i}`])
 
-        } else {
+    //     } else {
 
-            let slot = document.getElementById(`handdiv`)
-            slot.appendChild(htmlcards[`htmlcard${i}`])
+    //         let slot = document.getElementById(`handdiv`)
+    //         slot.appendChild(htmlcards[`htmlcard${i}`])
 
-        }
+    //     }
 
-    }
+    // }
 
 
 })

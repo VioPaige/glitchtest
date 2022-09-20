@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             taken: false
         }
     }
+    let ownhand = []
 
     ownhealth.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${100}%, rgb(255, 0, 0) ${110}%)`
     ophealth.style.backgroundImage = `linear-gradient(90deg, rgb(0, 255, 0) ${100}%, rgb(255, 0, 0) ${110}%)`
@@ -135,8 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             }
 
-                            slot.el.appendChild(i)
-                            slot.taken = true
+                            // i.classList = `card active`
+                            // slot.el.appendChild(i)
+                            // slot.taken = true
+                            socket.emit('cardplayed', { card })
 
                         }
 
