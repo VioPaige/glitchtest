@@ -27,7 +27,10 @@ module.exports = {
                 connected: undefined,
                 connection: undefined,
                 cookie: undefined,
-                stats: [],
+                stats: {
+                    balance: 0,
+                    health: 50
+                },
                 hand: [],
                 deathpit: [],
                 stack: [],

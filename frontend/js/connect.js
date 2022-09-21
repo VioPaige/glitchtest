@@ -126,6 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
+    socket.on('setbalance', (data) => {
+
+        let { player, amount } = data
+
+        let balancecounter = document.getElementById(`${player}moneycount`)
+
+        if (amount < 10) amount = `0${amount}`
+
+        balancecounter.innerText = `$${amount}`
+
+    })
+
 
 
     // local listeners
@@ -161,11 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             console.log(`slotid=${id}`)
 
+                            icard.style = ``
+
                             for (let i of slotstoend) {
 
                                 console.log(`removed from slot ${i.slot}`)
                                 console.log(i.slot)
                                 i.slot.el.removeEventListener('click', i.f)
+                                icard.removeEventListener('click', iclick)
 
                             }
 

@@ -72,7 +72,7 @@ module.exports = {
             5,
             [
                 {
-                    desc: "Start of turn: Earn 2 <span style=\"color: gold;\">money</span>."
+                    desc: "Start of turn: Earn 2 <span style=\"color: gold;\">balance</span>."
                 }
             ]
         )

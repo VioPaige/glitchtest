@@ -49,6 +49,13 @@ class Matchdoc {
 
     }
 
+    updateBalances = () => {
+
+        this.doc[`player${this.doc.atturn}`].connection.emit('setbalance', { player: "own", amount: this.doc[`player${this.doc.atturn}`].stats.balance })
+        this.doc[`player${this.otherPlrNum(this.doc.atturn)}`].connection.emit('setbalance', { player: "op", amount: this.doc[`player${this.doc.atturn}`].stats.balance })
+
+    }
+
     timer = async () => {
         console.log(`timer: ${this.doc.timer}`)
         if (this.doc.timer > 0) {
@@ -112,48 +119,60 @@ class Matchdoc {
             // all listeners that only work during own turn
             // if (this.doc.atturn == i) {
 
-                // endturn
-                v.on('endturn', () => {
+            // endturn
+            v.on('endturn', () => {
 
-                    if (this.doc.atturn != i) return
-                    this.endofturn()
+                if (this.doc.atturn != i) return
+                this.endofturn()
 
-                })
+            })
 
-                // cardplayed
-                // console.log(`cardplayed?`)
-                v.on('cardplayed', (data) => {
-                    if (this.doc.atturn != i) return
-                    console.log(data)
-                    let contains = [false, undefined] // yes/no, atindex
+            // cardplayed
+            // console.log(`cardplayed?`)
+            v.on('cardplayed', (data) => {
 
-                    for (let i = 0; i < this.doc[`player${this.doc.atturn}`].hand.length; i++) {
-                        // console.log(this.doc[`player${this.doc.atturn}`].hand[i], data.cardid)
-                        // console.log(this.doc[`player${this.doc.atturn}`].hand)
-                        if (this.doc[`player${this.doc.atturn}`].hand[i][0][1] == data.cardid) {
+                if (this.doc.atturn != i) return
+                // if ()
 
+
+                console.log(data)
+                let contains = [false, undefined] // yes/no, atindex
+
+                for (let i = 0; i < this.doc[`player${this.doc.atturn}`].hand.length; i++) {
+                    // console.log(this.doc[`player${this.doc.atturn}`].hand[i], data.cardid)
+                    // console.log(this.doc[`player${this.doc.atturn}`].hand)
+                    if (this.doc[`player${this.doc.atturn}`].hand[i][0][1] == data.cardid) {
+
+                        if (this.doc[`player${this.doc.atturn}`].hand[i][0][0].Values.cost > this.doc[`player${this.doc.atturn}`].stats.balance)
+                            contains = [false, undefined]
+                        else {
+
+                            this.doc[`player${this.doc.atturn}`].stats.balance -=this.doc[`player${this.doc.atturn}`].hand[i][0][0].Values.cost
                             contains = [true, i]
-                            // console.log(`the card is in the hand`)
 
-                        }
+                            this.updateBalances()
 
-                    }
-
-                    if (contains[0] && !this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`]) {
-
-                        let picked = this.doc[`player${this.doc.atturn}`].hand.splice(contains[1], 1)
-
-                        // console.log(picked)
-
-                        this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`] = picked
-                        console.log(this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`])
-
-                        this.doc[`player${this.doc.atturn}`].connection.emit(`cardplaced`, { picked: data.cardid, position: data.position, player: `own` })
-                        this.doc[`player${this.otherPlrNum(this.doc.atturn)}`].connection.emit(`cardplaced`, { picked: data.cardid, position: data.position, player: `op`, cardinfo: picked })
+                        }// console.log(`the card is in the hand`)
 
                     }
 
-                })
+                }
+
+                if (contains[0] && !this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`]) {
+
+                    let picked = this.doc[`player${this.doc.atturn}`].hand.splice(contains[1], 1)
+
+                    // console.log(picked)
+
+                    this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`] = picked
+                    console.log(this.doc[`player${this.doc.atturn}`].board[`pos${data.position}`])
+
+                    this.doc[`player${this.doc.atturn}`].connection.emit(`cardplaced`, { picked: data.cardid, position: data.position, player: `own` })
+                    this.doc[`player${this.otherPlrNum(this.doc.atturn)}`].connection.emit(`cardplaced`, { picked: data.cardid, position: data.position, player: `op`, cardinfo: picked })
+
+                }
+
+            })
 
             // }
 
@@ -233,33 +252,38 @@ class Matchdoc {
 
         }
 
+        this.doc[`player${this.doc.atturn}`].stats.balance += Math.min(15, this.doc.gameturn)
+        this.updateBalances()
+        // this.doc[`player${this.doc.atturn}`].connection.emit('setbalance', { player: "own", amount: this.doc[`player${this.doc.atturn}`].stats.balance })
+        // this.doc[`player${this.otherPlrNum(this.doc.atturn)}`].connection.emit('setbalance', { player: "op", amount: this.doc[`player${this.doc.atturn}`].stats.balance })
+
 
         if (this.doc.atturn == 1) this.doc.notatturn = 2
         else this.doc.notatturn = 1
 
-        this.startofturneffects.damage(10, "op")
+        // this.startofturneffects.damage(10, "op")
 
-        for (let [i, v] of Object.entries(this.doc[`player${this.doc.atturn}`].board)) {
+        // for (let [i, v] of Object.entries(this.doc[`player${this.doc.atturn}`].board)) {
 
-            if (v) {
+        //     if (v) {
 
-                if (v.pow) {
+        //         if (v.pow) {
 
-                    for (let i of v.pow) {
+        //             for (let i of v.pow) {
 
-                        if (Object.keys(i) != 0) {
+        //                 if (Object.keys(i) != 0) {
 
 
 
-                        }
+        //                 }
 
-                    }
+        //             }
 
-                }
+        //         }
 
-            }
+        //     }
 
-        }
+        // }
 
         this.interval = setInterval(this.timer, 1000)
 
