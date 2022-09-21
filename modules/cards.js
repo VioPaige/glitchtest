@@ -17,7 +17,7 @@ module.exports = {
             1, // cost
             [ // powers
                 {
-                    desc: "Give 1 poison to any enemy this attacks. (Triggers 3 times MAX)",
+                    desc: "Give 1 <span style=\"color:grey;\">diseased:1</span> to any enemy this attacks. (Triggers 3 times MAX)",
                     iter: 3,
                     efct: "diseased:1"
                 }
@@ -41,7 +41,7 @@ module.exports = {
             5,
             [
                 {
-                    desc: "Flying",
+                    desc: "<span style=\"text-decoration: underline;\">Flying</span>",
                     iter: -1,
                     efct: "flying:-1"
                 }
@@ -57,7 +57,7 @@ module.exports = {
             7,
             [
                 {
-                    desc: "Rage",
+                    desc: "<span style=\"text-decoration: underline;\">Rage</span>",
                     iter: -1,
                     efct: "rage:-1"
                 }
@@ -72,7 +72,7 @@ module.exports = {
             5,
             [
                 {
-                    desc: "Start of turn: Earn 2 money."
+                    desc: "Start of turn: Earn 2 <span style=\"color: gold;\">money</span>."
                 }
             ]
         )

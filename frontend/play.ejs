@@ -18,19 +18,24 @@
 
         <div class="boardwrapper">
 
-            <table id="otherplayer" class="playerbar">
-                <tbody style="display: table; width: 100%;">
-                    <tr>
-                        <td class="playerinfo">
-                            <!-- Anonymous (L<span style="color:blueviolet;">0</span>) -->
-                            <%= opponent %> (L<span style="color:blueviolet;">0</span>)
-                            [<span id="optimer">0</span>]
-                        </td>
-                        <td class="emptyTD"></td>
-                        <td class="playerstats"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="playerwrapper" class="playerwrapper">
+                <div id="moneycount" class="moneycounter">
+                    $00
+                </div>
+                <table id="otherplayer" class="playerbar">
+                    <tbody style="display: table; width: 100%;">
+                        <tr>
+                            <td class="playerinfo">
+                                <!-- Anonymous (L<span style="color:blueviolet;">0</span>) -->
+                                <%= opponent %> (L<span style="color:blueviolet;">0</span>)
+                                    [<span id="optimer">0</span>]
+                            </td>
+                            <td class="emptyTD"></td>
+                            <td class="playerstats"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="board">
                 <div id="opponentboard" class="playerboard top">
@@ -44,7 +49,7 @@
                     </div>
                 </div>
                 <div id="ownboard" class="playerboard bot">
-                    
+
                     <div id="ownSLOT1" class="cardslot slot1">
                     </div>
                     <div id="ownSLOT2" class="cardslot slot2">
@@ -56,20 +61,25 @@
                 </div>
             </div>
 
-            <table id="player" class="playerbar">
-                <tbody style="display: table; width: 100%;">
-                    <tr>
-                        <td class="playerinfo">
-                            <!-- Anonymous (L<span style="color:blueviolet;">0</span>) -->
-                            <%= you %> (L<span style="color:blueviolet;">0</span>)
-                            [<span id="owntimer">60</span>]
-                            <button id="endturn" class="endturn">End Turn</button>
-                        </td>
-                        <td class="emptyTD"></td>
-                        <td class="playerstats"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="playerwrapper" class="playerwrapper">
+                <div id="moneycount" class="moneycounter">
+                    $00
+                </div>
+                <table id="player" class="playerbar">
+                    <tbody style="display: table; width: 100%;">
+                        <tr>
+                            <td class="playerinfo">
+                                <!-- Anonymous (L<span style="color:blueviolet;">0</span>) -->
+                                <%= you %> (L<span style="color:blueviolet;">0</span>)
+                                    [<span id="owntimer">60</span>]
+                                    <button id="endturn" class="endturn">End Turn</button>
+                            </td>
+                            <td class="emptyTD"></td>
+                            <td class="playerstats"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 

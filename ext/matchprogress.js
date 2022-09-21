@@ -110,11 +110,12 @@ class Matchdoc {
 
             // console.log(`this.atturn=${this.atturn}, i=${i}`)
             // all listeners that only work during own turn
-            if (this.doc.atturn == i) {
+            // if (this.doc.atturn == i) {
 
                 // endturn
                 v.on('endturn', () => {
 
+                    if (this.doc.atturn != i) return
                     this.endofturn()
 
                 })
@@ -122,6 +123,7 @@ class Matchdoc {
                 // cardplayed
                 // console.log(`cardplayed?`)
                 v.on('cardplayed', (data) => {
+                    if (this.doc.atturn != i) return
                     console.log(data)
                     let contains = [false, undefined] // yes/no, atindex
 
@@ -153,7 +155,7 @@ class Matchdoc {
 
                 })
 
-            }
+            // }
 
             // other listeners
 
